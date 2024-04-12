@@ -1,0 +1,6 @@
+@for(product of products; track product.id){
+<div style="border: 1px solid black; margin-top: 10px">
+  <p>{{product.title}}</p>
+  <img [src]="product.image" alt="" style="width: 10%" />
+</div>
+}
