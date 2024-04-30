@@ -1,0 +1,16 @@
+{
+  "printWidth": 999,
+  "tabWidth": 2,
+  "tabs": false,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "semicolon": true,
+  "quoteProps": "preserve",
+  "bracketSpacing": true,
+  "bracketSameLine": true,
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "parser": "angular",
+  "pluginSearchDirs": false
+}
