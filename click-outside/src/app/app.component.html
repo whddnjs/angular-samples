@@ -1,0 +1,28 @@
+<button (click)="isClicked = true">click</button>
+@if(isClicked){
+<div
+  (appClickOutside)="isClicked = false"
+  [ignoreElement]="ignore"
+  style="
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  hello
+</div>
+}
+<div
+  #ignore
+  style="
+    margin-top: 20px;
+    border: 1px solid black;
+    width: 50px;
+    text-align: center;
+  "
+>
+  ignore
+</div>
