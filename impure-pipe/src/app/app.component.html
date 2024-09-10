@@ -1,0 +1,10 @@
+<div>
+  <button (click)="addItem()">아이템 추가</button>
+  <p>총 아이템 수: {{ items | countItems }}</p>
+  <h3>아이템 리스트</h3>
+  <ul>
+    @for (item of items; track $index) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+</div>
