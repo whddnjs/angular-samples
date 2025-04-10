@@ -1,0 +1,122 @@
+<!-- rich-editor.component.html -->
+<div class="rich-editor-container">
+  <div class="toolbar">
+    <!-- Text formatting -->
+    <select (change)="formatText('formatBlock', $event)">
+      <option value="p">Normal</option>
+      <option value="h1">Heading 1</option>
+      <option value="h2">Heading 2</option>
+      <option value="h3">Heading 3</option>
+      <option value="pre">Code</option>
+    </select>
+
+    <select formControlName="fontFamily" (change)="changeFontFamily($event)">
+      <option value="Arial, sans-serif">Sans Serif</option>
+      <option value="Times New Roman, serif">Serif</option>
+      <option value="Courier New, monospace">Monospace</option>
+      <option value="Arial">Arial</option>
+      <option value="Helvetica">Helvetica</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Courier">Courier</option>
+    </select>
+
+    <!-- Text style -->
+    <button (click)="applyFormat('bold')" title="Bold">
+      <i class="fas fa-bold"></i>
+    </button>
+    <button (click)="applyFormat('italic')" title="Italic">
+      <i class="fas fa-italic"></i>
+    </button>
+    <button (click)="applyFormat('underline')" title="Underline">
+      <i class="fas fa-underline"></i>
+    </button>
+    <button (click)="applyFormat('strikeThrough')" title="Strike Through">
+      <i class="fas fa-strikethrough"></i>
+    </button>
+
+    <!-- Text color -->
+    <div class="color-picker">
+      <input
+        type="color"
+        [(ngModel)]="textColor"
+        (change)="setTextColor($event)"
+        title="Text Color"
+      />
+      <span class="color-indicator">A</span>
+    </div>
+    <div class="color-picker">
+      <input
+        type="color"
+        [(ngModel)]="backgroundColor"
+        (change)="setBackgroundColor($event)"
+        title="Background Color"
+      />
+      <span class="color-indicator">BG</span>
+    </div>
+
+    <!-- Alignment -->
+    <button (click)="setAlignment('left')" title="Align Left">
+      <i class="fas fa-align-left"></i>
+    </button>
+    <button (click)="setAlignment('center')" title="Align Center">
+      <i class="fas fa-align-center"></i>
+    </button>
+    <button (click)="setAlignment('right')" title="Align Right">
+      <i class="fas fa-align-right"></i>
+    </button>
+    <button (click)="setAlignment('justify')" title="Justify">
+      <i class="fas fa-align-justify"></i>
+    </button>
+
+    <!-- Lists -->
+    <button (click)="formatText('insertOrderedList')" title="Numbered List">
+      <i class="fas fa-list-ol"></i>
+    </button>
+    <button (click)="formatText('insertUnorderedList')" title="Bullet List">
+      <i class="fas fa-list-ul"></i>
+    </button>
+
+    <!-- Indent/Outdent -->
+    <button (click)="formatText('indent')" title="Increase Indent">
+      <i class="fas fa-indent"></i>
+    </button>
+    <button (click)="formatText('outdent')" title="Decrease Indent">
+      <i class="fas fa-outdent"></i>
+    </button>
+
+    <!-- Insert elements -->
+    <button (click)="insertLink()" title="Insert Link">
+      <i class="fas fa-link"></i>
+    </button>
+    <button (click)="insertImage()" title="Insert Image">
+      <i class="fas fa-image"></i>
+    </button>
+    <button (click)="insertTable()" title="Insert Table">
+      <i class="fas fa-table"></i>
+    </button>
+
+    <!-- Source code view -->
+    <button (click)="toggleSourceView()" title="Source Code">
+      <i class="fas fa-code"></i>
+    </button>
+  </div>
+
+  <!-- Hidden file inputs -->
+  <input
+    #imageInput
+    type="file"
+    accept="image/*"
+    style="display: none"
+    (change)="onImageSelected($event)"
+  />
+
+  <!-- Editable content area -->
+  <div
+    #editableContent
+    class="editor-content"
+    [class.source-view]="isSourceView"
+    (input)="onContentChange()"
+    (keydown)="onKeyDown($event)"
+    (paste)="onPaste($event)"
+  ></div>
+</div>
