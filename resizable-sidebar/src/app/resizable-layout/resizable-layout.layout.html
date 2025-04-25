@@ -1,0 +1,25 @@
+<aside
+  class="bg-[#dedede] relative overflow-hidden border-r border-r-[#ccc] order-1 shrink-0"
+  [style.width.px]="currentWidth()"
+>
+  <button
+    class="bg-black text-white mx-4 mb-4 px-2 py-1 cursor-pointer rounded-sm"
+    (click)="reset()"
+  >
+    Reset
+  </button>
+
+  <ng-content select="[sidebar]" />
+
+  <div
+    class="absolute top-0 right-0 w-3 h-full cursor-ew-resize flex items-center justify-center bg-[#bbb] transition-colors z-10 hover:bg-[#aaa]"
+    cdkDrag
+    (cdkDragMoved)="onDragMoved($event)"
+  >
+    <span class="text-base pointer-events-none select-none text-[#333]">⠿</span>
+  </div>
+</aside>
+
+<main class="flex p-4 bg-white order-2">
+  <ng-content select="[main]" />
+</main>
